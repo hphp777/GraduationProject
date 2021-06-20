@@ -1,3 +1,4 @@
+import rooms
 from django.db import models
 from django_countries.fields import CountryField
 from core import models as core_models
@@ -80,18 +81,30 @@ class Room(core_models.TimeStampedModel):
     # 하지만 room은 1명의 user만을 가질 수 있다.
     # on_delete: user가 삭제되었다면 어떻게 대응 할 것인가?
     # 이 옵션은 foreign key에만 적용된다.
-    host = models.ForeignKey(user_models.User, on_delete=models.CASCADE)
+    # related_name = 관계된 객체가 "자신"을 어떻게 가리키는가임!
+    host = models.ForeignKey(
+        user_models.User, related_name="rooms", on_delete=models.CASCADE)
     # Many to many관계는 foreign key를 사용하지 않는다.
     room_type = models.ForeignKey(
         RoomType, on_delete=models.SET_NULL, null=True)
     # 여러개의 amenity 타입을 하나의 방이 가질 수 있음.
-    Amenities = models.ManyToManyField(Amenity, blank=True)
-    Facilities = models.ManyToManyField(Facility, blank=True)
-    house_rules = models.ManyToManyField(HouseRule, blank=True)
+    Amenities = models.ManyToManyField(
+        Amenity, related_name="rooms", blank=True)
+    Facilities = models.ManyToManyField(
+        Facility, related_name="rooms", blank=True)
+    house_rules = models.ManyToManyField(
+        HouseRule, related_name="rooms", blank=True)
 
     # 클래스를 문자열로 보여주는 함수. 이를 커스텀 할 수 있음. 모든 클래스가 가짐
     def __str__(self):
         return self.name
+
+    def total_rating(self):
+        all_reviews = self.reviews.all()
+        all_ratings = []
+        for review in all_reviews:
+            all_ratings.append(review.rating_average())
+        return 0
 
 
 class Photo (core_models.TimeStampedModel):
@@ -100,7 +113,8 @@ class Photo (core_models.TimeStampedModel):
 
     caption = models.CharField(max_length=80)
     file = models.ImageField()
-    rooms = models.ForeignKey(Room, on_delete=models.CASCADE)
+    rooms = models.ForeignKey(
+        Room, related_name="photos", on_delete=models.CASCADE)
 
     def __str__(self):
         return self.caption

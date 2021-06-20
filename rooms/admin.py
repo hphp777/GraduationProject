@@ -9,7 +9,10 @@ class ItemAdmin(admin.ModelAdmin):
 
     """ Item Admin Definition """
 
-    pass
+    list_display = ("name", "used_by")
+
+    def used_by(self, obj):
+        return obj.rooms.count()
 
 
 @admin.register(models.Room)
@@ -58,6 +61,8 @@ class RoomAdmin(admin.ModelAdmin):
         "city",
         "country",
         "count_amenities",  # 함수로 만들어준 것을 디스플레이. 이거는 클릭해도 정렬이 안됨
+        "count_photos",
+        "total_rating",
     )
 
     ordering = ("name", "price", "bedrooms")
@@ -85,6 +90,9 @@ class RoomAdmin(admin.ModelAdmin):
     # room 객체와 열을 입력 받음
     def count_amenities(self, obj):
         return obj.Amenities.count()
+
+    def count_photos(self, obj):
+        return obj.photos.count()
 
 
 @admin.register(models.Photo)
