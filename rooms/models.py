@@ -59,6 +59,7 @@ class HouseRule(AbstractItem):
 
 
 class Room(core_models.TimeStampedModel):
+
     """Room Model Definition"""
 
     name = models.CharField(max_length=140)
