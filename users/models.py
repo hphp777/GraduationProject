@@ -37,7 +37,9 @@ class User(AbstractUser):
         (CURRENCY_KRW, "KRW")
     )
 
-    avatar = models.ImageField(null=True, blank=True)
+    # 기본적으로, 미디어는 uploads 폴더에 들어간다.
+    # upload_to는 그 폴더 안에서 또 어디에 위치시킬지에 관한 것이다.
+    avatar = models.ImageField(upload_to="avatars", null=True, blank=True)
     gender = models.CharField(choices=GENDER_CHOICES,
                               max_length=10, null=True, blank=True)
     bio = models.TextField(default="", blank=True)

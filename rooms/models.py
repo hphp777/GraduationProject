@@ -99,12 +99,17 @@ class Room(core_models.TimeStampedModel):
     def __str__(self):
         return self.name
 
+    # 아래의 함수는 어디민에서 모델으 건드릴 때 뿐만이 아니라 어딘가에서 모델을 건드릴 때 항상 일어난다.
+    def save(self, *args, **kwargs):
+        self.city = str.capitalize(self.city)
+        super().save(*args, **kwargs)
+
     def total_rating(self):
         all_reviews = self.reviews.all()
-        all_ratings = []
+        all_ratings = 0
         for review in all_reviews:
-            all_ratings.append(review.rating_average())
-        return 0
+            all_ratings += review.rating_average()
+        return all_ratings / len(all_reviews)
 
 
 class Photo (core_models.TimeStampedModel):
@@ -112,7 +117,7 @@ class Photo (core_models.TimeStampedModel):
     """ Photo Model Definition """
 
     caption = models.CharField(max_length=80)
-    file = models.ImageField()
+    file = models.ImageField(upload_to="room_photos")
     rooms = models.ForeignKey(
         Room, related_name="photos", on_delete=models.CASCADE)
 

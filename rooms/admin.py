@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.html import mark_safe
 from . import models
 
 # Register your models here.
@@ -14,11 +15,20 @@ class ItemAdmin(admin.ModelAdmin):
     def used_by(self, obj):
         return obj.rooms.count()
 
+# admin 안에 admin을 추가해주는 방식
+
+
+class PhotoInline(admin.TabularInline):
+
+    model = models.Photo
+
 
 @admin.register(models.Room)
 class RoomAdmin(admin.ModelAdmin):
 
     """ Room Admin Definition """
+
+    inlines = (PhotoInline, )
 
     # room을 추가할 때 화면에 표시해주는 방식
     fieldsets = (
@@ -82,6 +92,9 @@ class RoomAdmin(admin.ModelAdmin):
     # many to many에서 작동하는 필터
     filter_horizontal = ("Amenities", "Facilities", "house_rules")
 
+    # foreign key를 더 나은 방법으로 찾을 수 있는 방법을 제공
+    raw_id_fields = ("hosts", )
+
     # 이는 대소문자를 구분하지 않음. 검색되는 것은 도시.
     # foreign key에 접근하는 방법 == __
     search_fields = ['city', 'host__username']
@@ -100,4 +113,9 @@ class PhotoAdmin(admin.ModelAdmin):
 
     """ Photo Admin Definition """
 
-    pass
+    list_display = ('__str__', 'get_thumbnail')
+
+    def get_thumbnail(self, obj):
+        # django에게 해당 url로 접근해서 파일을 받아도 안전하다고 알려줌
+        return mark_safe(f'<img width="50px" src = "{obj.file.url}" />')
+    get_thumbnail.short_description = "Thumbnail"
