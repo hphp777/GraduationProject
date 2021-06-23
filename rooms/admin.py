@@ -93,7 +93,7 @@ class RoomAdmin(admin.ModelAdmin):
     filter_horizontal = ("Amenities", "Facilities", "house_rules")
 
     # foreign key를 더 나은 방법으로 찾을 수 있는 방법을 제공
-    raw_id_fields = ("hosts", )
+    raw_id_fields = ("host", )
 
     # 이는 대소문자를 구분하지 않음. 검색되는 것은 도시.
     # foreign key에 접근하는 방법 == __
@@ -106,6 +106,7 @@ class RoomAdmin(admin.ModelAdmin):
 
     def count_photos(self, obj):
         return obj.photos.count()
+    count_photos.short_decription = "Photo Count"
 
 
 @admin.register(models.Photo)

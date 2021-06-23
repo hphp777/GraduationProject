@@ -86,7 +86,7 @@ class Room(core_models.TimeStampedModel):
         user_models.User, related_name="rooms", on_delete=models.CASCADE)
     # Many to many관계는 foreign key를 사용하지 않는다.
     room_type = models.ForeignKey(
-        RoomType, on_delete=models.SET_NULL, null=True)
+        RoomType, related_name="rooms", on_delete=models.SET_NULL, null=True)
     # 여러개의 amenity 타입을 하나의 방이 가질 수 있음.
     Amenities = models.ManyToManyField(
         Amenity, related_name="rooms", blank=True)
@@ -107,9 +107,11 @@ class Room(core_models.TimeStampedModel):
     def total_rating(self):
         all_reviews = self.reviews.all()
         all_ratings = 0
-        for review in all_reviews:
-            all_ratings += review.rating_average()
-        return all_ratings / len(all_reviews)
+        if len(all_reviews) > 0:
+            for review in all_reviews:
+                all_ratings += review.rating_average()
+            return all_ratings / len(all_reviews)
+        return 0
 
 
 class Photo (core_models.TimeStampedModel):
