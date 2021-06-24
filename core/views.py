@@ -5,4 +5,4 @@ from django.http import HttpResponse
 
 
 def all_rooms(request):
-    return HttpResponse(request, "all_rooms.html")
+    return HttpResponse(request, "room_list.html")
