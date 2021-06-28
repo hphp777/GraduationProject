@@ -1,16 +1,20 @@
 {% extends "base.html" %}
 
 
-{% block page_name %}
+{% block page_title %}
 Home
-{% endblock page_name %}
+{% endblock page_title %}
 
 {% block content %}
 
 {{now}}
 
-{% for room in object_list %}
-<h1>{{room.name}} / ${{room.price}}</h1>
+{% for room in rooms %}
+<h3>
+    <a href="{% url "rooms:detail" room.pk %}">
+        {{room.name}} / ${{room.price}}
+    </a>
+</h3>
 {% endfor %}
 
 <h5>

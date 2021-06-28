@@ -19,7 +19,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    # 첫번째 인자에 해당하는 url을 입력했을 때 두번째 인자에 해당하는 url.py로 간다.
+    # 그 urls.py를 뭐라고 부르느냐? 가 namespace
     path("", include("core.urls", namespace="core")),  # 딱 첫 화면에 띄우는 것
+    path("rooms/", include("rooms.urls", namespace="rooms")),
     path('admin/', admin.site.urls),
 ]
 
