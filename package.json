@@ -1,0 +1,32 @@
+{
+  "name": "code",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "css": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hphp777/GraduationProject01.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hphp777/GraduationProject01/issues"
+  },
+  "homepage": "https://github.com/hphp777/GraduationProject01#readme",
+  "description": "",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-csso": "^4.0.1",
+    "gulp-postcss": "^9.0.0",
+    "gulp-sass": "^5.0.0",
+    "node-sass": "^6.0.1",
+    "tailwindcss": "^2.2.4"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.2.6",
+    "gulp-sourcemaps": "^3.0.0"
+  }
+}

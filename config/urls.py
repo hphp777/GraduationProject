@@ -23,6 +23,7 @@ urlpatterns = [
     # 그 urls.py를 뭐라고 부르느냐? 가 namespace
     path("", include("core.urls", namespace="core")),  # 딱 첫 화면에 띄우는 것
     path("rooms/", include("rooms.urls", namespace="rooms")),
+    path("users/", include("users.urls", namespace="users")),
     path('admin/', admin.site.urls),
 ]
 
