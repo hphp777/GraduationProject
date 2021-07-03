@@ -27,7 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
-# if settings.DEBUG:  # develop모드이면
-#     # 리스트 이름 변경하면 안됨
-#     urlpatterns += static(settings.MEDIA_URL,
-#                           document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:  # develop모드이면
+    # 리스트 이름 변경하면 안됨
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

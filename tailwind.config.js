@@ -11,7 +11,7 @@ module.exports = {
       borderRadius: {
         xl: "1.5rem"
       }
-    },
+    }
   },
   variants: {
     extend: {},

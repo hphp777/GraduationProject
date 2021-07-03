@@ -1,3 +1,5 @@
+from django.conf.urls.static import static
+from django.conf import settings
 from django.urls import path
 from . import views
 
@@ -8,4 +10,4 @@ urlpatterns = [
     # path에 변수를 입력받을 수도 있는것. 변수타입은 int, 이름은 pk
     path("<int:pk>", views.RoomDetail.as_view(), name="detail"),
     path("search/", views.SearchView.as_view(), name="search"),
-]
+] 
