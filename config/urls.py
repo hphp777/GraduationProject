@@ -24,6 +24,7 @@ urlpatterns = [
     path("", include("core.urls", namespace="core")),
     path('admin/', admin.site.urls),
     path("users/", include("users.urls", namespace="users")),
+    path("patients/", include("patients.urls", namespace="patients")),
 ]
 
 if settings.DEBUG:  # develop모드이면
