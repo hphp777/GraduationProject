@@ -8,7 +8,7 @@ from . import forms
 
 
 class LoginView(FormView):
-    template_name = "users/login.html"
+    template_name = "login.html"
     form_class = forms.LoginForm
     success_url = reverse_lazy("core:home")
 
@@ -27,7 +27,7 @@ def log_out(request):
 
 class SignUpView(FormView):
 
-    template_name = "users/signup.html"
+    template_name = "signup.html"
     form_class = forms.SignUpForm
     success_url = reverse_lazy("core:home")
 
