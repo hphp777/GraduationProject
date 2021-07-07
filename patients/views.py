@@ -19,7 +19,6 @@ class PatientDetail(DetailView):
 
     """ PatientDetail Definition """
 
-    model = models.Room
 
 class SearchView(View):
     """ SearchView Definition """
