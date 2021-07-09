@@ -9,6 +9,7 @@ import patients
 class PatientView(ListView):
 
     """PatientsView Definition"""
+    
     template_name = "patient_list.html"
     paginate_by = 12
     paginate_orphans = 5
@@ -19,8 +20,16 @@ class PatientDetail(DetailView):
 
     """ PatientDetail Definition """
 
+class AllocationView():
+
+    """AllocationView Definition"""
+
+class ResisterView():
+
+    """ResisterView Defenition"""
 
 class SearchView(View):
+
     """ SearchView Definition """
 
     def get(self, request):

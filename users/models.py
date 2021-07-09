@@ -18,4 +18,3 @@ class User(AbstractUser):
     gender = models.CharField(choices=GENDER_CHOICES,
                               max_length=10, null=True, blank=True)
     superhost = models.BooleanField(default=False)
-    superhost = models.BooleanField(default=False)

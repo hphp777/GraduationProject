@@ -42,6 +42,24 @@ class Patient(core_models.TimeStampedModel):
         (PNEUMOTHORAX, "pneumothorax")
     )
 
+    LOW = "low"
+    MIDDLE = "middle"
+    HIGH = "high"
+
+    SERIOUSNESS_CHOICES = (
+        (LOW , "low"),
+        (MIDDLE , "middle"),
+        (HIGH , "high")
+    )
+
+    FEMALE = "female"
+    MALE = "male"
+
+    GENDER_CHOICES = (
+        (FEMALE , "female"),
+        (MALE , "male")
+    )
+
     name = models.CharField(max_length=140)
     description = models.TextField()
     disease1 = models.CharField(
@@ -55,3 +73,7 @@ class Patient(core_models.TimeStampedModel):
     )
     avatar = models.ImageField(upload_to="avatars", null=True, blank=True)
     doctor = models.ForeignKey(user_models.User, related_name="patients", on_delete=models.CASCADE)
+    age = models.IntegerField()
+    seriousness = models.CharField(choices=SERIOUSNESS_CHOICES, blank=False, max_length=10,default=LOW)
+    gender = models.CharField(choices=GENDER_CHOICES, blank=False, max_length=10, default=FEMALE)
+    id = models.IntegerField(primary_key=True)

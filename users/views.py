@@ -10,7 +10,7 @@ from . import forms
 class LoginView(FormView):
     template_name = "login.html"
     form_class = forms.LoginForm
-    success_url = reverse_lazy("core:home")
+    success_url = reverse("patients:list")
 
     def form_valid(self, form):
         email = form.cleaned_data.get("email")
