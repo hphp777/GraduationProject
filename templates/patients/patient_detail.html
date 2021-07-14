@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+
+{% block page_name %}
+    Home
+{% endblock page_name %}
+
+{% block content %}
+
+<div>
+    <h1>{{patient.name}}</h1>
+    <h3>{{patient.id}}</h3>
+</div>
+<div>
+    <h2>
+    {% if patient.doctor.superhost %}
+        Doctor: {{patient.doctor}}
+    {% endif %}
+    </h2>
+    <h3>Images</h3>
+    <ul>
+    {% for a in patient.images.all  %}
+        <li>{{a}}</li>
+    {% endfor %}
+</div>
+
+{% endblock %} 
