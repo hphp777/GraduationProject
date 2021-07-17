@@ -1,5 +1,6 @@
 {% load static %}
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,16 +56,16 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="registeration.html">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Registration</span></a>
+                <a class="nav-link" href="{% url "patients:list"%}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Patient List</span></a>
             </li>
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="patientList.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Patient List</span></a>
+                <a class="nav-link" href="{% url "patients:registration"%}">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Registration</span></a>
             </li>
             
             <!-- Nav Item - Charts -->
@@ -92,7 +93,7 @@
 
             <!-- Sidebar Message -->
             <div class="sidebar-card d-none d-lg-flex">
-                <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
+                <img class="sidebar-card-illustration mb-2" src="{%static 'img/undraw_rocket.svg'%}" alt="...">
                 <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
                 <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
             </div>
@@ -197,7 +198,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href={% url "core:home"%}>Logout</a>
                 </div>
             </div>
         </div>
@@ -214,7 +215,7 @@
     <script src="{%static 'js/sb-admin-2.min.js' %}"></script>
 
     <!-- Page level plugins -->
-    <script src="{%static 'vendor/chart.js/Chart.min.js' %"></script>
+    <script src="{%static 'vendor/chart.js/Chart.min.js' %}"></script>
 
     <!-- Page level custom scripts -->
     <script src="{%static 'js/demo/chart-area-demo.js' %}"></script>

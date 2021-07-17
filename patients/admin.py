@@ -29,8 +29,6 @@ class PatientAdmin(admin.ModelAdmin):
 
     list_filter = ("doctor",)
 
-    # raw_id_fields = ("doctor",)
-
     search_fields = ("=id", "^name")
 
     def count_images(self, obj):

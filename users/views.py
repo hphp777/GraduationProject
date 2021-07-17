@@ -2,7 +2,8 @@ from django.views.generic import FormView
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login, logout
-from . import forms
+from django.contrib.messages.views import SuccessMessageMixin
+from . import forms, models
 
 # Create your views here.
 

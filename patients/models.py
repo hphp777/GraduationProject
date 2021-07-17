@@ -5,7 +5,17 @@ import os
 
 class Image(core_models.TimeStampedModel):
 
-    """Image Model Definition"""
+    """ Image Model Definition """
+
+    file = models.ImageField(upload_to="patient_images")
+    patient = models.ForeignKey("Patient", related_name="images", on_delete=models.CASCADE)
+    def __str__(self):
+        return os.path.basename(self.file.name)
+
+
+class Patient(core_models.TimeStampedModel):
+
+    """Patient Model Definition"""
 
     ATELECTASIS = "atelectasis"
     CARDIOMEGALY = "cardiomegaly"
@@ -47,31 +57,6 @@ class Image(core_models.TimeStampedModel):
 
     SERIOUSNESS_CHOICES = ((LOW, "low"), (MIDDLE, "middle"), (HIGH, "high"))
 
-    file = models.ImageField(upload_to="patient_images")
-    patient = models.ForeignKey(
-        "Patient", related_name="images", on_delete=models.CASCADE
-    )
-    disease1 = models.CharField(
-        choices=DISEASE_CHOICES, blank=False, max_length=20, default=NO_FINDING
-    )
-    disease2 = models.CharField(
-        choices=DISEASE_CHOICES, blank=False, max_length=20, default=NO_FINDING
-    )
-    disease3 = models.CharField(
-        choices=DISEASE_CHOICES, blank=False, max_length=20, default=NO_FINDING
-    )
-    seriousness = models.CharField(
-        choices=SERIOUSNESS_CHOICES, blank=False, max_length=10, default=LOW
-    )
-
-    def __str__(self):
-        return os.path.basename(self.file.name)
-
-
-class Area(core_models.TimeStampedModel):
-
-    """Place Model Definition"""
-
     CPR = "cpr"
     CRITICAL_CARE_AREAS = "critical_care_areas"
     CASUALITY_DEPARTMENT = "casualty_department "
@@ -83,21 +68,6 @@ class Area(core_models.TimeStampedModel):
         (CASUALITY_DEPARTMENT, "casualty_department"),
         (EMERGENCY_PATIENT_AREAS, "emergency_patient_areas"),
     )
-
-    # patient2 = models.ForeignKey(
-    #     "Patient2", related_name="images", on_delete=models.CASCADE
-    # )
-    area = models.CharField(
-        choices=AREA_CHOICES, blank=False, max_length=10, default=CASUALITY_DEPARTMENT
-    )
-
-    # def __str__(self):
-    #     return self.patient.name
-
-
-class Patient(core_models.TimeStampedModel):
-
-    """Patient Model Definition"""
 
     FEMALE = "female"
     MALE = "male"
@@ -113,7 +83,23 @@ class Patient(core_models.TimeStampedModel):
     doctor = models.ForeignKey(
         "users.User", related_name="patients", on_delete=models.CASCADE
     )
-    # avatar = models.ImageField(upload_to="avatars", null=True, blank=True)
+    description = models.TextField(default="", blank=True)
+    # images=models.ManyToManyField("Image",related_name="patients",blank=True)
+    disease1 = models.CharField(
+        choices=DISEASE_CHOICES, blank=False, max_length=20, default=NO_FINDING
+    )
+    disease2 = models.CharField(
+        choices=DISEASE_CHOICES, blank=False, max_length=20, default=NO_FINDING
+    )
+    disease3 = models.CharField(
+        choices=DISEASE_CHOICES, blank=False, max_length=20, default=NO_FINDING
+    )
+    seriousness = models.CharField(
+        choices=SERIOUSNESS_CHOICES, blank=False, max_length=10, default=LOW
+    )
+    area = models.CharField(
+        choices=AREA_CHOICES, blank=False, max_length=10, default=CASUALITY_DEPARTMENT
+    )
 
     def __str__(self):
         return self.name
@@ -121,6 +107,9 @@ class Patient(core_models.TimeStampedModel):
     def get_absolute_url(self):
         return reverse("patients:detail", kwargs={"pk": self.pk})
 
-    def first_image(self):
-        image, = self.images.all()[:1]
-        return image.file.url
+    def get_image(self):
+        try:
+            image = self.images.all()[:1]
+            return image   
+        except ValueError:
+            return None

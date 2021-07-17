@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+    {% block content %}
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+
+            <div class="container">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                            <div class="col-lg-7">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Create Patient Info!</h1>
+                                    </div>
+                                    <form class="user">
+                                        <form>
+                                            <div class="container lg:w-5/12 md:w-1/2 xl:w-1/4 mx-auto my-10 flex flex-col items-center border p-6 border-gray-400"> 
+                                                {% include 'patients/patient_form.html' with form=form cta="Create patient" %}
+                                            </div>
+                    
+                                            <div class="input-group mb-3">
+                                                <input type="file" class="form-control" id="inputGroupFile02">
+                                                <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                                            </div>                                  
+                                        </form>
+
+                                        <a href="{% url "patients:list"%}" class="btn btn-primary btn-user btn-block">
+                                            Register
+                                        </a>
+                                        
+                                    </form>
+                                    <hr>
+                                    <div class="text-center">
+                                        <a class="small" href="{% url "patients:list"%}">Already have patient info? Find from Patient List!</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+    {% endblock %}

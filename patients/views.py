@@ -1,8 +1,12 @@
-from django.views.generic import ListView, DetailView, View
+from django.http import Http404
+from django.views.generic import ListView, DetailView, View, UpdateView, FormView
+from django.shortcuts import render, redirect, reverse
 from django.core.paginator import Paginator
-from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
+# from users import mixins as user_mixins
 from . import models, forms
-
 
 # Create your views here.
 
@@ -10,7 +14,6 @@ class PatientView(ListView):
 
     """PatientsView Definition"""
     
-    # template_name = "patient_list.html"
     model=models.Patient
     paginate_by = 12
     paginate_orphans = 5
@@ -23,13 +26,29 @@ class PatientDetail(DetailView):
 
     model = models.Patient
 
-class AllocationView():
+class AllocationView(ListView):
 
     """AllocationView Definition"""
+    
 
-class ResisterView():
+class RegistrationView(FormView):
 
-    """ResisterView Defenition"""
+    """RegisterationView Defenition"""
+
+    form_class = forms.CreatePatientForm
+    template_name = "patients/patient_registration.html"
+
+    def form_valid(self, form):
+        patient = form.save()
+        patient.doctor = self.request.user
+        patient.save()
+        form.save_m2m()
+        messages.success(self.request, "Patient Registration")
+        return redirect(reverse("patients:detail", kwargs={"pk": patient.pk}))
+
+class DiagnosisView():
+    
+    """ResisterView Defenition"""    
 
 class SearchView(View):
 
