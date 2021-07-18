@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+
+{% block page_name %}
+    Patient Detail
+{% endblock page_name %}
+
+{% block content %}
+
+<div>
+    <h1>Patient Detail</h1>
+    <h4>Name : {{patient.name}}</h4>
+    <h4>ID : {{patient.id}}</h4>
+</div>
+<div>
+    <h4>
+    {% if patient.doctor.superhost %}
+        Doctor : {{patient.doctor}}
+    {% endif %}
+    </h4>
+    <h4>Images : </h4>
+    <ul>
+    {% for image in patient.images.all  %}
+        <li>
+            <img src="{{image.file.url}}" width="100"> <br>
+            {{image.disease1}}
+        </li>
+    {% endfor %}
+</div>
+
+<div class="-mt-5 container max-w-full h-75vh flex mb-20">
+    <div class="h-full w-1/2 bg-center bg-cover" style="background-image:url({{patient.first_photo}})"></div>
+    {% comment %} <div class="h-full w-1/2 flex flex-wrap">
+        {% for pati in room.get_next_four_photos %}
+            <div style="background-image:url({{photo.file.url}})" class="w-1/2 h-auto bg-cover bg-center border-gray-700 border"></div>
+        {% endfor %}
+    </div> {% endcomment %}
+</div>
+
+{% endblock %} 
