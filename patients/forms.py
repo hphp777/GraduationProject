@@ -6,9 +6,9 @@ class SearchForm(forms.Form):
 
     pass
 
-class CreateImageForm(forms.ModelForm):
+class CreateDiadnosisForm(forms.ModelForm):
     class Meta:
-        model = models.Image
+        model = models.Diagnosis
         fields = ('file',)
 
     def save(self, pk, *args, **kwargs):
