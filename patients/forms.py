@@ -30,6 +30,3 @@ class CreatePatientForm(forms.ModelForm):
             "doctor",
             "description",
         ]
-    def save(self, *args, **kwargs):
-        patient = super().save(commit=False)
-        return patient

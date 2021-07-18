@@ -24,7 +24,6 @@
                         </tr></thead>
                         <tbody>
                         {% for patient in patients %}
-                        <a href="{% url 'rooms:detail' room.pk %}"></a>
                             <tr onClick="location.href='{% url "patients:detail" patient.pk %}'">
                             <td>{{patient.name}}</td>
                             <td align="right">{{patient.id}}</td>
@@ -33,7 +32,6 @@
                             <td>{{patient.doctor}}</td>
                             <td>{{patient.description}}</td>
                             </tr>
-                        </a>
                         {% endfor %}
                         </tbody>
                     </table>
@@ -41,13 +39,13 @@
                 <nav aria-label="Page navigation">
                     <ul class="pagination justify-content-center">
                         <li class="page-item disabled">
-                        {% if page_obj.has_previous %}
+                        {% if patients.has_previous %}
                         <a class="page-link" href="?page={{page_obj.previous_page_number}}" tabindex="-1">Previous</a>
                         {% endif %}
                         </li>
-                        <span class="mx-3 font-medium text-lg">{{page_obj.number}} of {{page_obj.paginator.num_pages}}</span>
+                        <span class="mx-3 font-medium text-lg">{{patients.number}} of {{patients.paginator.num_pages}}</span>
                         <li class="page-item">
-                        {% if page_obj.has_next  %}
+                        {% if patients.has_next  %}
                         <a class="page-link" href="?page={{page_obj.next_page_number}}">Next</a>
                         {% endif %}
                         </li>

@@ -27,18 +27,14 @@ class PatientDetail(DetailView):
     """ RoomDetail Definition """
 
     model = models.Patient
-
-class AllocationView(ListView):
-
-    """AllocationView Definition"""
     
 def registrate(request):
     if request.method=='POST':
         form = forms.CreatePatientForm(request.POST)
         if form.is_valid():
-            post = form.save()
+            post = form.save(commit=False)
             post.save()
-        return redirect('/patiensts/list')
+        return redirect("/patients/list")
     else: #GET
         form = forms.CreatePatientForm()
     return render(request, 'patients/patient_registration.html', {'form': form})

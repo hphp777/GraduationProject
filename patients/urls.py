@@ -9,5 +9,4 @@ urlpatterns = [
     path("<int:pk>", views.PatientDetail.as_view(), name="detail"),
     path("registration/", views.registrate, name="registration"),
     # path("diagnosis/", views.DiagnosisView.as_view(), name="diagnosis"),
-    # path("allocation/", views.AllocationView.as_view(), name="allocation"),
 ]

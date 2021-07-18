@@ -86,19 +86,16 @@ class Patient(core_models.TimeStampedModel):
     description = models.TextField(default="", blank=True)
     # images=models.ManyToManyField("Image",related_name="patients",blank=True)
     disease1 = models.CharField(
-        choices=DISEASE_CHOICES, blank=False, max_length=20, default=NO_FINDING
+        choices=DISEASE_CHOICES, blank=True, max_length=20, default=NO_FINDING
     )
     disease2 = models.CharField(
-        choices=DISEASE_CHOICES, blank=False, max_length=20, default=NO_FINDING
+        choices=DISEASE_CHOICES, blank=True, max_length=20, default=NO_FINDING
     )
     disease3 = models.CharField(
-        choices=DISEASE_CHOICES, blank=False, max_length=20, default=NO_FINDING
+        choices=DISEASE_CHOICES, blank=True, max_length=20, default=NO_FINDING
     )
     seriousness = models.CharField(
-        choices=SERIOUSNESS_CHOICES, blank=False, max_length=10, default=LOW
-    )
-    area = models.CharField(
-        choices=AREA_CHOICES, blank=False, max_length=30, default=CASUALITY_DEPARTMENT
+        choices=SERIOUSNESS_CHOICES, blank=True, max_length=10, default=LOW
     )
 
     def __str__(self):
