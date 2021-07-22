@@ -28,13 +28,4 @@
     {% endfor %}
 </div>
 
-<div class="-mt-5 container max-w-full h-75vh flex mb-20">
-    <div class="h-full w-1/2 bg-center bg-cover" style="background-image:url({{patient.first_photo}})"></div>
-    {% comment %} <div class="h-full w-1/2 flex flex-wrap">
-        {% for pati in room.get_next_four_photos %}
-            <div style="background-image:url({{photo.file.url}})" class="w-1/2 h-auto bg-cover bg-center border-gray-700 border"></div>
-        {% endfor %}
-    </div> {% endcomment %}
-</div>
-
 {% endblock %} 
