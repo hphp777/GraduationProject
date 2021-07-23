@@ -8,24 +8,32 @@
 {% block content %}
 
 <div>
-    <h1>Patient Detail</h1>
-    <h4>Name : {{patient.name}}</h4>
-    <h4>ID : {{patient.id}}</h4>
-</div>
-<div>
+    <div class="page-header">Name : {{patient.name}}</div>
+    <div class="page-header">ID : {{patient.id}}</div>
     <h4>
     {% if patient.doctor.superhost %}
         Doctor : {{patient.doctor}}
     {% endif %}
     </h4>
-    <h4>Images : </h4>
+</div>
+
+<form method = "post" enctype="multipart/form-data">
+    <div class="container lg:w-5/12 md:w-1/2 xl:w-1/4 mx-auto my-10 flex flex-col items-center border p-6 border-gray-400"> 
+        {% csrf_token %}
+        {{ form.as_p }}
+    <button type="submit">Upload</button>
+    </div>
+</form>
+
+<div>
+    <div class="page-header mt-3">Diagnosis history</div>
     <ul>
     {% for image in patient.images.all  %}
         <li>
             <img src="{{image.file.url}}" width="100"> <br>
-            {{image.disease1}}
+            {{image.disease}}
         </li>
     {% endfor %}
 </div>
 
-{% endblock %} 
+{% endblock content %} 

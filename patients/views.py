@@ -5,47 +5,47 @@ from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
+from django.core.paginator import Paginator, EmptyPage
 # from users import mixins as user_mixins
 from . import models, forms
+from django.http import HttpResponse
 
 # Create your views here.
 
-class PatientView(ListView):
+def all_patient(request):
+    page = request.GET.get("page", 1)
+    patient_list = models.Patient.objects.all()
+    paginator = Paginator(patient_list, 10, orphans=5)
+    print("patients: " , patient_list)
+    try:
+        patients = paginator.page(int(page))
+        return render(request, "patients/patient_list.html", {"patients": patients})
+    except EmptyPage:
+        return redirect("/patients/list")
 
-    """PatientsView Definition"""
+def detail(request,pk):
+    form = forms.CreateDetailForm(request.POST, request.FILES)
+    patient=models.Patient.objects.get(pk=pk)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save(pk)
+            return redirect(reverse("patients:detail", kwargs={"pk": pk}))
+    else:
+        form = forms.CreateDetailForm()
+    return render(request, 'patients/patient_detail.html', {'patient':patient , 'form': form})
+
+
+def registrate(request):
+    if request.method=='POST':
+        form = forms.CreatePatientForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+        return redirect("/patients/list")
+    else: #GET
+        form = forms.CreatePatientForm()
+    return render(request, 'patients/patient_registration.html', {'form': form})
     
-    model=models.Patient
-    paginate_by = 12
-    paginate_orphans = 5
-    ordering = "created"
-    context_object_name = "patients"
-
-class PatientDetail(DetailView):
-    
-    """ RoomDetail Definition """
-
-    model = models.Patient
-
-class AllocationView(ListView):
-
-    """AllocationView Definition"""
-    
-
-class RegistrationView(FormView):
-
-    """RegisterationView Defenition"""
-
-    form_class = forms.CreatePatientForm
-    template_name = "patients/patient_registration.html"
-
-    def form_valid(self, form):
-        patient = form.save()
-        patient.doctor = self.request.user
-        patient.save()
-        form.save_m2m()
-        messages.success(self.request, "Patient Registration")
-        return redirect(reverse("patients:detail", kwargs={"pk": patient.pk}))
-
 class DiagnosisView():
     
     """ResisterView Defenition"""    

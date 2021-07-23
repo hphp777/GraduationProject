@@ -37,8 +37,7 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                            <div class="col-lg-6">
+                            <div class="col-md-10 mx-auto">
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
@@ -46,15 +45,21 @@
                                     <form method="POST" action="{% url "users:login" %}" lass="user">
                                         {% csrf_token %}
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address...">
+                                            <input type="text" class="form-control form-control-user"
+                                                id=""
+                                                placeholder="Enter ID" name= "username">
+                                            {% if field.errors %}
+                                                <span class="text-red-700 font-medium text-sm">{{error}}</span> 
+                                            {% endif %}
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                                id="exampleInputPassword" placeholder="Password" name="password">
+                                            {% if field.errors %}
+                                                <span class="text-red-700 font-medium text-sm">{{error}}</span> 
+                                            {% endif %}
                                         </div>
-                                        <button class="btn btn-primary btn-lg btn-block" type="button" onclick="location.href='{% url "patients:list" %}' ">sign in</button>
+                                        <button type="submit" class="btn btn-primary">Log in</button>
                                     </form>
                                     <hr>
                                     <div class="text-center">

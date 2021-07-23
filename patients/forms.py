@@ -6,34 +6,29 @@ class SearchForm(forms.Form):
 
     pass
 
-class CreateImageForm(forms.ModelForm):
+class CreateDetailForm(forms.ModelForm):
     class Meta:
-        model = models.Image
-        fields = ('file',)
-
+        model = models.Diagnosis
+        fields = [
+            "file",
+            #"disease",
+        ]
     def save(self, pk, *args, **kwargs):
-        image = super().save(commit=False)
+        photo = super().save(commit=False)
         patient = models.Patient.objects.get(pk=pk)
-        image.patient = patient
-        image.save()
+        photo.patient = patient
+        photo.save()
 
-
+        
 class CreatePatientForm(forms.ModelForm):
+
     class Meta:
         model = models.Patient
-        fields = (
+        fields = [
             "name",
             "id",
             "age",
             "gender",
             "doctor",
             "description",
-            "disease1",
-            "disease2",
-            "disease3",
-            "seriousness",
-            "area",
-        )
-    def save(self, *args, **kwargs):
-        patient = super().save(commit=False)
-        return patient
+        ]

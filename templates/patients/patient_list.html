@@ -21,10 +21,9 @@
                         <th title="Field #4">Gender</th>
                         <th title="Field #5">Doctor</th>
                         <th title="Field #6">Description</th>
-                        <th title="Field #7">Disease</th>
                         </tr></thead>
                         <tbody>
-                        {% for patient in patients  %}
+                        {% for patient in patients %}
                             <tr onClick="location.href='{% url "patients:detail" patient.pk %}'">
                             <td>{{patient.name}}</td>
                             <td align="right">{{patient.id}}</td>
@@ -32,7 +31,6 @@
                             <td align="right">{{patient.gender}}</td>
                             <td>{{patient.doctor}}</td>
                             <td>{{patient.description}}</td>
-                            <td>{{patient.disease1}}</td>
                             </tr>
                         {% endfor %}
                         </tbody>
@@ -41,31 +39,18 @@
                 <nav aria-label="Page navigation">
                     <ul class="pagination justify-content-center">
                         <li class="page-item disabled">
-                        {% if page_obj.has_previous %}
+                        {% if patients.has_previous %}
                         <a class="page-link" href="?page={{page_obj.previous_page_number}}" tabindex="-1">Previous</a>
                         {% endif %}
                         </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <span class="mx-3 font-medium text-lg">{{patients.number}} of {{patients.paginator.num_pages}}</span>
                         <li class="page-item">
-                        {% if page_obj.has_next  %}
+                        {% if patients.has_next  %}
                         <a class="page-link" href="?page={{page_obj.next_page_number}}">Next</a>
                         {% endif %}
                         </li>
                     </ul>
                 </nav>
-        </div>
-
+            </div>
+    </div>            
     {% endblock %}
-           {% comment %} <h6 class="m-0 font-weight-bold text-primary">
-                    {% if page_obj.has_previous %}
-                    <a href="?page={{page_obj.previous_page_number}}">Previous</a>
-                    {% endif %}
-
-                    Page : {{page_obj.number}} / {{page_obj.paginator.num_pages}}
-
-                    {% if page_obj.has_next  %}
-                    <a href="?page={{page_obj.next_page_number}}">Next</a>
-                    {% endif %}
-                </h6> {% endcomment %}

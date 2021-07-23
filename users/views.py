@@ -4,22 +4,25 @@ from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.messages.views import SuccessMessageMixin
 from . import forms, models
-
+from django.contrib import auth
+from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect
 # Create your views here.
 
 
-class LoginView(FormView):
-    template_name = "login.html"
-    form_class = forms.LoginForm
-    success_url = reverse_lazy("patients:list")
-
-    def form_valid(self, form):
-        email = form.cleaned_data.get("email")
-        password = form.cleaned_data.get("password")
-        user = authenticate(self.request, username=email, password=password)
+def login(request):
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = auth.authenticate(request, username=username, password=password)
         if user is not None:
-            login(self.request, user)
-        return super().form_valid(form)
+            auth.login(request, user)
+            return HttpResponseRedirect('/patients/list/')
+        else:
+            return render(request, 'login.html', {'error':'username or password is incorrect'})
+            # 로그인 실패시 'username or password is incorrect' 메시지를 띄움  
+    else:
+        return render(request, 'login.html')
 
 def log_out(request):
     logout(request)

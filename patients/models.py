@@ -3,19 +3,9 @@ from django.urls import reverse
 from core import models as core_models
 import os
 
-class Image(core_models.TimeStampedModel):
-
+class Diagnosis(core_models.TimeStampedModel):
+    
     """ Image Model Definition """
-
-    file = models.ImageField(upload_to="patient_images")
-    patient = models.ForeignKey("Patient", related_name="images", on_delete=models.CASCADE)
-    def __str__(self):
-        return os.path.basename(self.file.name)
-
-
-class Patient(core_models.TimeStampedModel):
-
-    """Patient Model Definition"""
 
     ATELECTASIS = "atelectasis"
     CARDIOMEGALY = "cardiomegaly"
@@ -51,6 +41,20 @@ class Patient(core_models.TimeStampedModel):
         (PNEUMOTHORAX, "pneumothorax"),
     )
 
+    file = models.ImageField(upload_to="patient_images", blank=True, null=True)
+    patient = models.ForeignKey("Patient", related_name="images", on_delete=models.CASCADE)
+    disease = models.CharField(
+        choices=DISEASE_CHOICES, blank=True, max_length=20, default=NO_FINDING
+    )
+
+    def __str__(self):
+        return self.disease
+
+
+class Patient(core_models.TimeStampedModel):
+
+    """Patient Model Definition"""
+
     LOW = "low"
     MIDDLE = "middle"
     HIGH = "high"
@@ -84,21 +88,10 @@ class Patient(core_models.TimeStampedModel):
         "users.User", related_name="patients", on_delete=models.CASCADE
     )
     description = models.TextField(default="", blank=True)
-    # images=models.ManyToManyField("Image",related_name="patients",blank=True)
-    disease1 = models.CharField(
-        choices=DISEASE_CHOICES, blank=False, max_length=20, default=NO_FINDING
-    )
-    disease2 = models.CharField(
-        choices=DISEASE_CHOICES, blank=False, max_length=20, default=NO_FINDING
-    )
-    disease3 = models.CharField(
-        choices=DISEASE_CHOICES, blank=False, max_length=20, default=NO_FINDING
-    )
+    # images=models.ManyToManyField("Diagnosis",related_name="patients",blank=True)
+    
     seriousness = models.CharField(
-        choices=SERIOUSNESS_CHOICES, blank=False, max_length=10, default=LOW
-    )
-    area = models.CharField(
-        choices=AREA_CHOICES, blank=False, max_length=10, default=CASUALITY_DEPARTMENT
+        choices=SERIOUSNESS_CHOICES, blank=True, max_length=10, default=LOW
     )
 
     def __str__(self):
@@ -106,10 +99,3 @@ class Patient(core_models.TimeStampedModel):
 
     def get_absolute_url(self):
         return reverse("patients:detail", kwargs={"pk": self.pk})
-
-    def get_image(self):
-        try:
-            image = self.images.all()[:1]
-            return image   
-        except ValueError:
-            return None
