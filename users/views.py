@@ -3,10 +3,11 @@ from django.urls import reverse_lazy
 from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.messages.views import SuccessMessageMixin
-from . import forms, models
 from django.contrib import auth
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
+
+from .forms import UserForm
 # Create your views here.
 
 
@@ -29,17 +30,12 @@ def log_out(request):
     return redirect(reverse_lazy("core:home"))
 
 
-class SignUpView(FormView):
-
-    template_name = "signup.html"
-    form_class = forms.SignUpForm
-    success_url = reverse_lazy("core:home")
-
-    def form_valid(self, form):
-        form.save()
-        email = form.cleaned_data.get("email")
-        password = form.cleaned_data.get("password")
-        user = authenticate(self.request, username=email, password=password)
-        if user is not None:
-            login(self.request, user)
-        return super().form_valid(form)
+def signup(request):
+    if request.method == "POST":
+        form = UserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse_lazy("core:home"))
+    else:
+        form = UserForm()
+    return render(request, 'signup.html', {'form': form})

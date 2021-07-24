@@ -19,6 +19,7 @@ class User(AbstractUser):
     )
 
     # name = models.CharField(max_length=140, null=True, blank=True)
+    name = models.CharField(max_length=140, null=True, blank=True)
     avatar = models.ImageField(upload_to="avatars", null=True, blank=True)
     gender = models.CharField(
         choices=GENDER_CHOICES, max_length=10, null=True, blank=True
