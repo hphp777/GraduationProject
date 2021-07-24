@@ -8,8 +8,7 @@
 {% block content %}
 
 <div>
-    <div class="page-header ml-4">Name : {{patient.name}}</div>
-    <div class="page-header ml-4 mt-2">ID : {{patient.id}}</div>
+    <div class="page-header ml-4">Name : {{patient.name}} / ID : {{patient.id}}</div>
     <h4>
     {% if patient.doctor.superhost %}
         Doctor : {{patient.doctor}}
@@ -17,8 +16,8 @@
     </h4>
 </div>
 
-<form method = "post" enctype="multipart/form-data" class="ml-4 mt-4">
-    <div class=" container lg:w-5/12 md:w-1/2 xl:w-1/4 mx-50 my-10 flex flex-col items-center border p-6 border-gray-400 rounded-lg"> 
+<form method = "post" enctype="multipart/form-data" class="ml-5 mt-4">
+    <div class=" container lg:w-5/12 md:w-1/2 xl:w-1/4 mx-50 my-10 flex flex-col items-center border border-gray-400 rounded-lg"> 
         {% csrf_token %}
         {% bootstrap_form form %}
     <button type="submit" class="btn btn-primary flex">Upload</button>
@@ -26,13 +25,45 @@
 </form>
 
 <div>
-    <div class="page-header mt-3 ml-4">Diagnosis history</div>
+    <div class="page-header mt-3 ml-5">Diagnosis history</div>
     <ul>
     {% for image in patient.images.all  %}
+    <div class="container" style="display: inline-block;text-align: center; width: 300px;">
         <li style="list-style: none;" class="mt-3">
-            <img src="{{image.file.url}}" width="300"> <br>
-            {{image.disease}}
+            <img src="{{image.file.url}}" width="275"> <br>   
         </li>
+        <table class="table mt-2 ">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Disease</th>
+                    <th>Percentage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Cardiomegaly</td>
+                    <td>86%</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Emphysema</td>
+                    <td>5%</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>No Finding</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>2순위</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     {% endfor %}
 </div>
 

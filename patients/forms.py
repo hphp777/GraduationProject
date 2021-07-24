@@ -11,7 +11,6 @@ class CreateDetailForm(forms.ModelForm):
         model = models.Diagnosis
         fields = [
             "file",
-            #"disease",
         ]
     def save(self, pk, *args, **kwargs):
         photo = super().save(commit=False)
