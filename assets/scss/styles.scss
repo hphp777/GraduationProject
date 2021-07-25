@@ -6,12 +6,12 @@
 }
 
 .nav_link{
-    @apply ml-6 border-b-2 border-white h-full flex items-center;
+    @apply ml-8 border-b border-gray-400 h-full flex items-center;
     a {
       @apply py-10 px-5;
     }
     &:hover {
-      @apply border-gray-600;
+      @apply border-b-2 border-gray-600;
     }
   }
 
@@ -38,6 +38,40 @@
           }
         }
       }
+    }
+  }
+  @keyframes messageFadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    5% {
+      opacity: 1;
+      transform: translateY(50px);
+    }
+    95% {
+      opacity: 1;
+      transform: translateY(50px);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+  }
+  
+  .message {
+    animation: messageFadeIn 5s ease-in-out forwards;
+    &.error {
+      @apply bg-red-600;
+    }
+    &.info {
+      @apply bg-blue-500;
+    }
+    &.success {
+      @apply bg-green-500;
+    }
+    &.warning {
+      @apply bg-yellow-400;
     }
   }
   

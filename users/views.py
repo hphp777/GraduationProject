@@ -2,6 +2,7 @@ from django.views.generic import FormView
 from django.urls import reverse_lazy
 from django.shortcuts import redirect, reverse
 from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 from . import forms
 
 # Create your views here.
@@ -15,12 +16,13 @@ class LoginView(FormView):
     def form_valid(self, form):
         email = form.cleaned_data.get("email")
         password = form.cleaned_data.get("password")
-        user = authenticate(self.request, username=email, password=password)
+        user = authenticate(self.request, username=email, password=password) # 기본적으로 로그인을 하려면 username, password가 필요
         if user is not None:
             login(self.request, user)
         return super().form_valid(form)
 
 def log_out(request):
+    messages.info(request, f"See you later")
     logout(request)
     return redirect(reverse("core:home"))
 

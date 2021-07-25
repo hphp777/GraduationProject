@@ -2,7 +2,8 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 # Create your models here.
-
+# AbstractUser는 기존의 User모델을 사용하면서 추가적인 정보를 넣기 위해 사용한다.
+# config settings.py에서 유저모델을 어떤걸 사용했는지 지정해주어야 한다.
 
 class User(AbstractUser):
     """Custom user model"""

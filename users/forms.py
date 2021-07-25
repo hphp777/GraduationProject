@@ -19,10 +19,13 @@ class LoginForm(forms.Form):
         except models.User.DoesNotExist:
             self.add_error("email", forms.ValidationError("User does not exist"))
 
+# modelform은 내가 form을 만들면 내가 어떤 model을 만들고싶어하는지 안다.
+# 그래서 field를정해주지 않아도 된다.
+# modelform에서는 자체적으로 clean, save method가 존재한다.
 class SignUpForm(forms.ModelForm):
     class Meta:
-        model = models.User
-        fields = ("first_name", "last_name", "email")
+        model = models.User #이 form을 통해 어떤 model을 생성할거니?
+        fields = ("first_name", "last_name", "email") # 해당 model에서 어떤 field를 사용할거니?
         widgets = {
             "first_name": forms.TextInput(attrs={"placeholder": "First Name"}),
             "last_name": forms.TextInput(attrs={"placeholder": "Last Name"}),
@@ -58,5 +61,6 @@ class SignUpForm(forms.ModelForm):
         user = super().save(commit=False)
         email = self.cleaned_data.get("email")
         password = self.cleaned_data.get("password")
-        user.username = email
+        user.username = email # email이 username이 되도록 한다.
         user.set_password(password)
+        user.save()
