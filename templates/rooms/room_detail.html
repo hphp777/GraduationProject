@@ -10,8 +10,10 @@
     <h1>{{room.name}}</h1>
     <h3>{{room.description}}</h3>
 </div>
-<div>
-    <h2>By: {{room.host.username}}
+<div> <!--이 template은 room의 detailview랑 자동으로 연동되어있다.-->
+    <!--foreign key를 통해 user model에 접근이 가능하다.-->
+    <!--이 room 소유자의 profile과 연결되어있다.-->
+    <h2><h2>By: <a href="{{room.host.get_absolute_url}}">{{room.host.username}}</a>
         {% if room.host.superhost %}
         (superhost)
         {% endif %}

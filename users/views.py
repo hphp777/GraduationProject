@@ -1,9 +1,10 @@
-from django.views.generic import FormView
+from django.views.generic import FormView, DetailView
 from django.urls import reverse_lazy
 from django.shortcuts import redirect, reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from . import forms
+from . import models
 
 # Create your views here.
 
@@ -41,3 +42,17 @@ class SignUpView(FormView):
         if user is not None:
             login(self.request, user)
         return super().form_valid(form)
+
+class UserProfileView(DetailView):
+    
+    context_object_name = "user_obj"
+    model = models.User
+
+    # template안에 더 많은 context를 사용할 수 있게 해 줄것이다.
+    # super를 의무적으로 호출해야 하는데 이유는 user_obj를 기본으로 주기 때문에
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["hello"] = "Hello!"
+        return context
+        
+    
