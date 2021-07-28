@@ -1,4 +1,4 @@
-from django.views.generic import FormView, DetailView
+from django.views.generic import FormView, DetailView, UpdateView
 from django.urls import reverse_lazy
 from django.shortcuts import redirect, reverse
 from django.contrib.auth import authenticate, login, logout
@@ -55,4 +55,21 @@ class UserProfileView(DetailView):
         context["hello"] = "Hello!"
         return context
         
+class UpdateUserView(UpdateView):
     
+    model = models.User
+    template_name = "users/update-profile.html"
+    fields = (
+        "first_name",
+        "last_name",
+        "avatar",
+        "gender",
+        "bio",
+        "birthdate",
+        "language",
+        "currency",
+    )
+
+    # 수정하기를 원하는 객체를 반환해 줄 것이다.
+    def get_object(self, queryset=None):
+        return self.request.user

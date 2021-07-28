@@ -55,5 +55,8 @@ class User(AbstractUser):
     superhost = models.BooleanField(default=False)
     superhost = models.BooleanField(default=False)
 
+    # detail안에 있는 모델을 보기 위해서 URL을 반환해야만 한다.
+    # reverse는 URL과 user:profile을 반대로 해줄 것이다. 그리고 pk를 준다.
+    # 어드민 패널에서 객체들을 보고싶다면 이 함수가 아주 유용하다.
     def get_absolute_url(self):
         return reverse('users:profile', kwargs={'pk': self.pk})
