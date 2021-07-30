@@ -43,12 +43,24 @@ class Diagnosis(core_models.TimeStampedModel):
 
     file = models.ImageField(upload_to="patient_images", blank=True, null=True)
     patient = models.ForeignKey("Patient", related_name="images", on_delete=models.CASCADE)
-    disease = models.CharField(
+    disease1 = models.CharField(
         choices=DISEASE_CHOICES, blank=True, max_length=20, default=NO_FINDING
     )
+    disease2 = models.CharField(
+        choices=DISEASE_CHOICES, blank=True, max_length=20, default=NO_FINDING
+    )
+    disease3 = models.CharField(
+        choices=DISEASE_CHOICES, blank=True, max_length=20, default=NO_FINDING
+    )
+    percentage1=models.IntegerField(default=50)
+    percentage2=models.IntegerField(default=50)
+    percentage3=models.IntegerField(default=50)
 
     def __str__(self):
         return self.disease
+
+    def filename(self):
+        return os.path.basename(self.file.name)
 
 
 class Patient(core_models.TimeStampedModel):

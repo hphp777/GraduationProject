@@ -6,6 +6,13 @@ name = "pypi"
 [packages]
 django = "==2.2.5"
 pillow = "*"
+djangorestframework = "*"
+tensorflow = "*"
+efficientnet = "*"
+numpy = "*"
+pandas = "*"
+matplotlib = "*"
+django-bootstrap4 = "*"
 
 [dev-packages]
 flake8 = "*"
