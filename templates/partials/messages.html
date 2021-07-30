@@ -1,0 +1,8 @@
+<!--context processor때문에 우리는 messages를 가지고 있다.-->
+{% if messages %}
+    <ul class="">
+        {% for message in messages %}
+        <li class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %} 

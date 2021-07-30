@@ -1,9 +1,7 @@
 {% extends "base.html" %}
 {% load bootstrap4 %}
 
-{% block page_name %}
-    Patient Detail
-{% endblock page_name %}
+{% block page_title %}Patient Detail{% endblock page_title %}
 
 {% block content %}
 
@@ -17,7 +15,7 @@
 </div>
 
 <form method = "post" enctype="multipart/form-data" class="ml-5 mt-4">
-    <div class=" container lg:w-5/12 md:w-1/2 xl:w-1/4 mx-50 my-10 flex flex-col items-center border border-gray-400 rounded-lg"> 
+    <div class="p-4 container flex flex-col border border-gray-400 rounded-lg"> 
         {% csrf_token %}
         {% bootstrap_form form %}
     <button type="submit" class="btn btn-primary flex">Upload</button>
