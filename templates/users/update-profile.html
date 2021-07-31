@@ -5,14 +5,14 @@
 {% block content %}
 <form method="post" action="{% url 'users:update' %}" >
     {% csrf_token %}
-    <div class="container flex flex-colborder p-6 border-gray-400">
+    <div class="container flex p-6 border border-gray-400">
             
         {% bootstrap_form form %}
         
         <div class="">
-            <a href="{% url 'users:password' %}">Change Password</a>
+            <a class="btn btn-primary" href="{% url 'users:password' %}" role="button">Change Password</a>
         </div>
-        <button type="submit" class="btn btn-primary mt-3">Finished</button>
+        <button type="submit" class="btn btn-success mt-5">Finished</button>
         
     </div>
 </form>
