@@ -1,4 +1,5 @@
-from django.views.generic import FormView, DetailView
+from django.views.generic import FormView, DetailView, UpdateView
+from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login, logout
@@ -51,5 +52,23 @@ class UserProfileView(DetailView):
     # super를 의무적으로 호출해야 하는데 이유는 user_obj를 기본으로 주기 때문에
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["hello"] = "Hello!"
         return context
+
+class UpdateUserView(UpdateView):
+    
+    model = models.User
+    template_name = "users/update-profile.html"
+    fields = (
+        "email", # 이경우, email과 username을 같게 설정했다. 하지만 유저는 이를 모르므로 email만 변경할수 있도록 띄워주고 변경되면 email,username에 동시에 적용한다.
+        "username",
+        "avatar",
+        "gender",
+    )
+
+    # 수정하기를 원하는 객체를 반환해 줄 것이다.
+    def get_object(self, queryset=None):
+        return self.request.user
+
+
+class UpdatePasswordView(PasswordChangeView):
+    template_name = "users/update-password.html"
