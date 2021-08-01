@@ -4,17 +4,19 @@
     {% block content %}
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">
-            Patient List
-        </h1>
-
+        <div class='mb-3' style="width:960px; justify-content:flex-end;">
+            <span class="h3 mb-2 text-gray-800">
+                Patient List
+            </span>
+            <a href="{% url 'patients:edit' %}" class="btn btn-primary">edit</a>
+        </div>
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             {% comment %} <div class="card-header py-3">
             </div> {% endcomment %}
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover table-condensed">
+                    <table class="table table-bordered table-hover table-condensed" >
                         <thead><tr>
                         <th title="Field #1">Name</th>
                         <th title="Field #2">Id</th>
@@ -27,9 +29,9 @@
                         {% for patient in patients %}
                             <tr onClick="location.href='{% url "patients:detail" patient.pk %}'">
                             <td>{{patient.name}}</td>
-                            <td align="right">{{patient.id}}</td>
-                            <td align="right">{{patient.age}}</td>
-                            <td align="right">{{patient.gender}}</td>
+                            <td>{{patient.id}}</td>
+                            <td>{{patient.age}}</td>
+                            <td>{{patient.gender}}</td>
                             <td>{{patient.doctor}}</td>
                             <td>{{patient.description}}</td>
                             </tr>
@@ -37,21 +39,21 @@
                         </tbody>
                     </table>
                 </div>
-                <nav aria-label="Page navigation">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                        {% if patients.has_previous %}
-                        <a class="page-link" href="?page={{page_obj.previous_page_number}}" tabindex="-1">Previous</a>
-                        {% endif %}
-                        </li>
-                        <span class="mx-3 font-medium text-lg">{{patients.number}} of {{patients.paginator.num_pages}}</span>
-                        <li class="page-item">
-                        {% if patients.has_next  %}
-                        <a class="page-link" href="?page={{page_obj.next_page_number}}">Next</a>
-                        {% endif %}
-                        </li>
-                    </ul>
-                </nav>
             </div>
-    </div>            
+        </div>            
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                {% if patients.has_previous %}
+                <a class="page-link" href="?page={{page_obj.previous_page_number}}" tabindex="-1">Previous</a>
+                {% endif %}
+                </li>
+                <span class="mx-3 font-medium text-lg">{{patients.number}} of {{patients.paginator.num_pages}}</span>
+                <li class="page-item">
+                {% if patients.has_next  %}
+                <a class="page-link" href="?page={{page_obj.next_page_number}}">Next</a>
+                {% endif %}
+                </li>
+            </ul>
+        </nav>
     {% endblock %}

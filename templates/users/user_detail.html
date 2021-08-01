@@ -3,7 +3,7 @@
 {% block page_title %}My Profile{% endblock page_title %}
 
 {% block content %}
-<div class = "p-6 center-block" style="width: 460px;"> <!--방이 없더라도 footer가 프로필 바로 아래에 있지 않게 하기 위한것-->
+<div class = "p-6 center-block" style="width: 460px;margin: 0 auto;"> <!--방이 없더라도 footer가 프로필 바로 아래에 있지 않게 하기 위한것-->
     <div class="mt-2 container border p-6 border-gray-400">
         <div class="mt-3 p-6 h-20 w-20 bg-gray-700 flex justify-center items-center overflow-hidden"> <!--first라고 불리는 filter를 사용한다.-->
             {% if user.avatar %}

@@ -8,7 +8,8 @@ from django.contrib import auth
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from . import models
+from django.contrib.messages.views import SuccessMessageMixin
+from . import forms, models, mixins
 
 from .forms import UserForm
 # Create your views here.
@@ -45,16 +46,10 @@ def signup(request):
     return render(request, 'signup.html', {'form': form})
 
 class UserProfileView(DetailView):
-    
     model = models.User
+    context_object_name = "user_obj"
 
-    # template안에 더 많은 context를 사용할 수 있게 해 줄것이다.
-    # super를 의무적으로 호출해야 하는데 이유는 user_obj를 기본으로 주기 때문에
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
-
-class UpdateUserView(UpdateView):
+class UpdateProfileView(mixins.LoggedInOnlyView,SuccessMessageMixin,UpdateView):
     
     model = models.User
     template_name = "users/update-profile.html"
@@ -64,11 +59,25 @@ class UpdateUserView(UpdateView):
         "avatar",
         "gender",
     )
-
+    success_message = "Profile Updated"
+    
     # 수정하기를 원하는 객체를 반환해 줄 것이다.
     def get_object(self, queryset=None):
         return self.request.user
 
 
-class UpdatePasswordView(PasswordChangeView):
+class UpdatePasswordView(mixins.LoggedInOnlyView,SuccessMessageMixin,PasswordChangeView):
     template_name = "users/update-password.html"
+    success_message = "Password Updated"
+
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class=form_class)
+        form.fields["old_password"].widget.attrs = {"placeholder": "Current password"}
+        form.fields["new_password1"].widget.attrs = {"placeholder": "New password"}
+        form.fields["new_password2"].widget.attrs = {
+            "placeholder": "Confirm new password"
+        }
+        return form
+
+    def get_success_url(self):
+        return self.request.user.get_absolute_url()

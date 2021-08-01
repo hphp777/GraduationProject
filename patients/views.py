@@ -23,6 +23,17 @@ def all_patient(request):
     except EmptyPage:
         return redirect("/patients/list")
 
+def all_patient_edit(request):
+    page = request.GET.get("page", 1)
+    patient_list = models.Patient.objects.all()
+    paginator = Paginator(patient_list, 10, orphans=5)
+    print("patients: " , patient_list)
+    try:
+        patients = paginator.page(int(page))
+        return render(request, "patients/patient_edit.html", {"patients": patients})
+    except EmptyPage:
+        return redirect("/patients/list")
+
 def detail(request,pk):
     form = forms.CreateDetailForm(request.POST, request.FILES)
     patient=models.Patient.objects.get(pk=pk)
@@ -86,3 +97,11 @@ class SearchView(View):
             form = forms.SearchForm()
 
         return render(request, "search.html", {"form": form})
+
+def delete_patient(requrst, pk):
+    models.Patient.objects.filter(pk=pk).delete()
+    print("deleted")
+    if models.Patient.objects.count() > 0:
+        return redirect(reverse("patients:delete-patient"))
+    else:
+        return redirect(reverse("patients:list"))
