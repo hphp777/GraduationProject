@@ -96,6 +96,8 @@ class Room(core_models.TimeStampedModel):
     house_rules = models.ManyToManyField(
         HouseRule, related_name="rooms", blank=True)
 
+    #### 여기 함수들은 각 room 객체에 대해 적용하는 함수 ####
+
     # 클래스를 문자열로 보여주는 함수. 이를 커스텀 할 수 있음. 모든 클래스가 가짐
     def __str__(self):
         return self.name
@@ -121,6 +123,16 @@ class Room(core_models.TimeStampedModel):
         photo, = self.photos.all()[:1]
         return photo.file.url
 
+    def get_next_four_photos(self):
+        photos = self.photos.all()[1:5] # 한 객체에 등록된 사진들을 다 가져온다.
+        print(photos)
+        return photos
+
+    def get_beds(self):
+        if self.beds == 1:
+            return "1 bed"
+        else:
+            return f"{self.beds} beds"
 
 class Photo (core_models.TimeStampedModel):
 
@@ -131,5 +143,6 @@ class Photo (core_models.TimeStampedModel):
     rooms = models.ForeignKey(
         Room, related_name="photos", on_delete=models.CASCADE)
 
+    # 객체를 출력했을 때 표시되는 방법
     def __str__(self):
         return self.caption

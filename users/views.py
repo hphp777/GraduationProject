@@ -14,7 +14,7 @@ class LoginView(mixins.LoggedOutOnlyView,FormView):
     template_name = "users/login.html"
     form_class = forms.LoginForm
 
-    def form_valid(self, form):
+    def is_valid(self, form):
         email = self.cleaned_data.get("email")
         password = self.cleaned_data.get("password")
         user = authenticate(self.request, username=email, password=password) # 기본적으로 로그인을 하려면 username, password가 필요

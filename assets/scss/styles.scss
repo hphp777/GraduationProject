@@ -55,7 +55,10 @@
     height: 50px;
   }
   
-
+  .border-section {
+    @apply border-b border-gray-400 pb-8 mt-8;
+  }
+  
   .message {
     animation: messageFadeIn 5s ease-in-out forwards;
     &.error {

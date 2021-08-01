@@ -1,8 +1,10 @@
 <!--Avatar가 보여짐. 사진이 있으면 동그랗게 보여주고 아니면 그 안에 이름의 첫 글자를 보여준다.-->
 <div class="h-20 w-20 bg-gray-700 rounded-full text-white flex justify-center items-center overflow-hidden"> <!--first라고 불리는 filter를 사용한다.-->
     {% if user_obj.avatar %}
-        <img class="h-full w-full" src = "user_obj.avatar.url">
+        <div class="{{h_and_w|default:'h-20 w-20'}} rounded-full bg-cover" style="background-image: url({{user.avatar.url}});">
     {% else %}   
-        <span class="text-3xl">{{user_obj.first_name|first}}</span>
+        <div class="{{h_and_w|default:'h-20 w-20'}} bg-gray-700 rounded-full text-white flex justify-center items-center overflow-hidden">
+        <span class="{{text|default:'text-3xl'}}">{{user.first_name|first}}</span>
+        </div>
     {% endif %}
 </div>

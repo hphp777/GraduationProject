@@ -22,6 +22,7 @@ class RoomDetail(DetailView):
 
     """ RoomDetail Definition """
 
+    # room 객체와 room을 foreign key로 사용하는 모든 객체들에 접근이 가능하다.
     model = models.Room
 
 

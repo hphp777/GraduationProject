@@ -59,4 +59,5 @@ class User(AbstractUser):
     # reverse는 URL과 user:profile을 반대로 해줄 것이다. 그리고 pk를 준다.
     # 어드민 패널에서 객체들을 보고싶다면 이 함수가 아주 유용하다.
     def get_absolute_url(self):
+        # 장고는 기본적으로 pk (Primary Key)를 생성해주는데, id 값이라고 생각하면 됨. 각 object마다 가짐.
         return reverse('users:profile', kwargs={'pk': self.pk})
