@@ -38,6 +38,7 @@ def log_out(request):
 class SignUpView(mixins.LoggedOutOnlyView,FormView):
 
     template_name = "users/signup.html"
+    # 사용할 때는 그냥 form으로 사용.
     form_class = forms.SignUpForm
     success_url = reverse_lazy("core:home")
 

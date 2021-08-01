@@ -146,3 +146,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
 
 # media root에 접근 할 때
 MEDIA_URL = "/media/"
+
+# Auth
+
+LOGIN_URL = "/users/login/"
