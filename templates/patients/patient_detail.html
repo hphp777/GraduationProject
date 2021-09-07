@@ -27,8 +27,14 @@
     <ul>
     {% for image in patient.images.all  %}
     <div class="container" style="display: inline-block;text-align: center; width: 300px;">
+        {% comment %}   
+        original image
         <li style="list-style: none;" class="mt-3">
             <img src="{{image.file.url}}" width="275"> <br>   
+        </li> 
+        {% endcomment %}
+        <li style="list-style: none;" class="mt-3">
+            <img src="{{image.detection_file.url}}" width="275"> <br>   
         </li>
         <table class="table mt-2 ">
             <thead class="table-dark">
@@ -62,6 +68,9 @@
                 </tr>
             </tbody>
         </table>
+        <div class="flex flex-col w-1/5">
+            <a class="btn btn-primary" href="{% url 'patients:delete-image' patient.pk image.pk %}">Delete</a>
+        </div>
     </div>
     {% endfor %}
 </div>

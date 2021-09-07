@@ -3,9 +3,10 @@ from django.urls import reverse
 from core import models as core_models
 import os
 
-class Diagnosis(core_models.TimeStampedModel):
-    
-    """ Image Model Definition """
+
+class Image(core_models.TimeStampedModel):
+
+    """Image Model Definition"""
 
     ATELECTASIS = "atelectasis"
     CARDIOMEGALY = "cardiomegaly"
@@ -41,8 +42,14 @@ class Diagnosis(core_models.TimeStampedModel):
         (PNEUMOTHORAX, "pneumothorax"),
     )
 
+    # id = models.IntegerField(primary_key=True)
     file = models.ImageField(upload_to="patient_images", blank=True, null=True)
-    patient = models.ForeignKey("Patient", related_name="images", on_delete=models.CASCADE)
+    detection_file = models.ImageField(
+        upload_to="patient_detect_images/exp", blank=True, null=True
+    )
+    patient = models.ForeignKey(
+        "Patient", related_name="images", on_delete=models.CASCADE
+    )
     disease1 = models.CharField(
         choices=DISEASE_CHOICES, blank=True, max_length=20, default=NO_FINDING
     )
@@ -52,12 +59,12 @@ class Diagnosis(core_models.TimeStampedModel):
     disease3 = models.CharField(
         choices=DISEASE_CHOICES, blank=True, max_length=20, default=NO_FINDING
     )
-    percentage1=models.IntegerField(default=50)
-    percentage2=models.IntegerField(default=50)
-    percentage3=models.IntegerField(default=50)
+    percentage1 = models.IntegerField(default=50)
+    percentage2 = models.IntegerField(default=50)
+    percentage3 = models.IntegerField(default=50)
 
     def __str__(self):
-        return self.disease
+        return self.disease1
 
     def filename(self):
         return os.path.basename(self.file.name)
@@ -100,8 +107,7 @@ class Patient(core_models.TimeStampedModel):
         "users.User", related_name="patients", on_delete=models.CASCADE
     )
     description = models.TextField(default="", blank=True)
-    # images=models.ManyToManyField("Diagnosis",related_name="patients",blank=True)
-    
+
     seriousness = models.CharField(
         choices=SERIOUSNESS_CHOICES, blank=True, max_length=10, default=LOW
     )

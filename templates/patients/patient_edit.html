@@ -14,7 +14,6 @@
             </div> {% endcomment %}
             <div class="card-body">
                 <div class="table-responsive flex">
-                    
                     <table class="table table-bordered table-hover table-condensed" width="90%">
                         <thead><tr>
                         <th title="Field #2">Edit</th>    
@@ -38,21 +37,23 @@
                         </tbody>
                     </table>
                 </div>
-                <nav aria-label="Page navigation">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                        {% if patients.has_previous %}
-                        <a class="page-link" href="?page={{page_obj.previous_page_number}}" tabindex="-1">Previous</a>
-                        {% endif %}
-                        </li>
-                        <span class="mx-3 font-medium text-lg">{{patients.number}} of {{patients.paginator.num_pages}}</span>
-                        <li class="page-item">
-                        {% if patients.has_next  %}
-                        <a class="page-link" href="?page={{page_obj.next_page_number}}">Next</a>
-                        {% endif %}
-                        </li>
-                    </ul>
-                </nav>
+            </div>
+        </div>  
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+            {% if patients.has_previous %}
+            <a class="page-link" href="?page={{page_obj.previous_page_number}}" tabindex="-1">Previous</a>
+            {% endif %}
+            </li>
+            <span class="mx-3 font-medium text-lg">{{patients.number}} of {{patients.paginator.num_pages}}</span>
+            <li class="page-item">
+            {% if patients.has_next  %}
+            <a class="page-link" href="?page={{page_obj.next_page_number}}">Next</a>
+            {% endif %}
+        </li>
+            </ul>
+        </nav>
             </div>
     </div>            
     {% endblock %}

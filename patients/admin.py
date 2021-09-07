@@ -6,7 +6,7 @@ from . import models
 
 
 class ImageInline(admin.TabularInline):
-    model = models.Diagnosis
+    model = models.Image
 
 
 @admin.register(models.Patient)
@@ -35,7 +35,7 @@ class PatientAdmin(admin.ModelAdmin):
         return obj.images.count()
 
 
-@admin.register(models.Diagnosis)
+@admin.register(models.Image)
 class ImageAdmin(admin.ModelAdmin):
 
     """Image Admin Definition"""
