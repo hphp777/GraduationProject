@@ -1,4 +1,4 @@
-:crystal_ball:GraduationProject
+:crystal_ball:Chest X-ray Disease Diagnosis
 =============
 
 ## :sparkles:0. Dataset
