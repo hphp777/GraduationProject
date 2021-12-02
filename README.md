@@ -1,6 +1,14 @@
 :crystal_ball:Chest X-ray Disease Diagnosis
 =============
 
+Due to the global pandemic, the number of emergency patients continues to increase. More than
+half (56%) of patients visiting the emergency room are undergoing x-ray imaging. However, the time required for chest x-ray diagnosis in the emergency room takes about an hour, which is very long for emergency patients who need proper emergency treatment within golden time. In the case of system in this paper, x-ray imaging, which omits additional tests, is shortened to two stages of diagnosis, and the diagnosis speed of diagnosis is drastically shortened to around 12 seconds. To implement this, Classification and Detection-based Web Service was implemented, and Synthetic Medical X-ray Data were created using PGGAN to improve Classification performance. It is expected that these system will be used to improve the efficiency of medical process such as specifying problematic area, reducing x-ray processing time, and accurate disease classification in the emergency case.
+
+It is an explanation of the system structure of the program. Starting from the right, uploading the x-ray image from the website requests classification and detection diagnosis of the image at the backend. Then, the uploaded image is classified with the learned model. In the case of Detection, learning is conducted using the yolov5 model. Then, the suspected disease area is detected with the uploaded image and the resulting image is stored. Through this process, a screen is finally output as a result of diagnosing the patient's disease on the website screen and detecting the suspected disease occurrence site. Three possible diseases are presented to help doctors diagnose diseases quickly.
+
+
+
+
 ## :sparkles:0. Dataset
 ###### https://www.kaggle.com/nih-chest-xrays/data
 
