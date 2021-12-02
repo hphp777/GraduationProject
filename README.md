@@ -12,7 +12,7 @@
 
 ###### Training Data: [Google Drive Link](https://drive.google.com/drive/folders/11CUJGctnzHQcsq9O3WCSTRhgRjkMOOUN?usp=sharing)
 
-<img src="./Result_Image/Detection_NIH_200.jpg  width="400" height="400"/>
+<img src="./Result_Image/Detection_NIH_200.jpg"  width="400" height="400"/>
 
 ###### Result of NIH Data: [Google Drive Link](https://drive.google.com/drive/folders/1qo_5ICzeMUrHQ_-s0Z9d3KYSLCrNzqRl?usp=sharing)
 ###### Result of ChestX Data : [Google Drive Link](https://drive.google.com/drive/folders/1NBvWFz3Fto6ZqeLrqopEMlbUZnNpxodN?usp=sharing)
