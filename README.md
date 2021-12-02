@@ -1,7 +1,7 @@
 :crystal_ball:GraduationProject
 =============
 
-## 0. Dataset
+## :sparkles:0. Dataset
 ###### https://www.kaggle.com/nih-chest-xrays/data
 
 ## :sparkles:1. Classification
@@ -27,4 +27,8 @@
 
 ###### Generated Image(DCGAN): [Google Drive Link](https://drive.google.com/drive/folders/18MekMJsuhZS6Shu3T6nvmNihK4M4oilz?usp=sharing)
 
-
+#### Papers
+###### 1. 폐질환 의심 응급환자의 진단 과정 단축을 위한 AI기반 X-ray진단 시스템
+###### https://drive.google.com/file/d/1FnQGBRWvJ70iH2Rut0L7hjO-4Bt15vpc/view?usp=sharing
+###### 2. PGGAN synthetic data를 활용한 Class간 데이터분포의 불균형 완화가 X-ray 질병 진단 정확도에 미치는 영향 연구
+###### https://drive.google.com/file/d/1OPLWdxKm7L0jW0QhTIYEo4-7AER3-JNz/view?usp=sharing
