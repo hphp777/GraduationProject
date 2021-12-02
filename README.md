@@ -11,6 +11,9 @@
 ## :sparkles:2. Detection
 
 ###### Training Data: [Google Drive Link](https://drive.google.com/drive/folders/11CUJGctnzHQcsq9O3WCSTRhgRjkMOOUN?usp=sharing)
+
+![Result of NIH Data](https://drive.google.com/file/d/1_esGVl5KO3EWh5q4-rIRi4G2c8yRBk5V/view?usp=sharing)
+
 ###### Result of NIH Data: [Google Drive Link](https://drive.google.com/drive/folders/1qo_5ICzeMUrHQ_-s0Z9d3KYSLCrNzqRl?usp=sharing)
 ###### Result of ChestX Data : [Google Drive Link](https://drive.google.com/drive/folders/1NBvWFz3Fto6ZqeLrqopEMlbUZnNpxodN?usp=sharing)
 
