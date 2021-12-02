@@ -18,13 +18,16 @@ It is an explanation of the system structure of the program. Starting from the r
 
 ## :sparkles:2. Detection
 
+## :sparkles:2. Detection
+
 ###### Training Data: [Google Drive Link](https://drive.google.com/drive/folders/11CUJGctnzHQcsq9O3WCSTRhgRjkMOOUN?usp=sharing)
+###### Ultralytics Yolov5 : https://github.com/ultralytics/yolov5
 
 <img src="./Result_Image/Detection_NIH_200.jpg"  width="400" height="400"/>
 
 ###### Result of NIH Data: [Google Drive Link](https://drive.google.com/drive/folders/1qo_5ICzeMUrHQ_-s0Z9d3KYSLCrNzqRl?usp=sharing)
 ###### Result of ChestX Data : [Google Drive Link](https://drive.google.com/drive/folders/1NBvWFz3Fto6ZqeLrqopEMlbUZnNpxodN?usp=sharing)
-
+###### Result of NIH & ChestX Data: [Google Frive Link](https://drive.google.com/drive/folders/1Koryg3pxeUs7oJ0ulO7FEjrq0EMPB6of?usp=sharing)
 
 ## :sparkles:3. GAN Research
 
