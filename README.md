@@ -18,8 +18,6 @@ It is an explanation of the system structure of the program. Starting from the r
 
 ## :sparkles:2. Detection
 
-## :sparkles:2. Detection
-
 ###### Training Data: [Google Drive Link](https://drive.google.com/drive/folders/11CUJGctnzHQcsq9O3WCSTRhgRjkMOOUN?usp=sharing)
 ###### Ultralytics Yolov5 : https://github.com/ultralytics/yolov5
 
