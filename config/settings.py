@@ -93,6 +93,7 @@ else:
             'PASSWORD': "00000000",
             'PORT': "5432",
             "USER": "postgresql"
+        }
     }
 
 

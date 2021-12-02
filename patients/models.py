@@ -104,7 +104,7 @@ class Patient(core_models.TimeStampedModel):
         choices=GENDER_CHOICES, blank=False, max_length=10, default=FEMALE
     )
     doctor = models.ForeignKey(
-        "users.User", related_name="patients", on_delete=models.CASCADE
+        "users.User", related_name="patients", on_delete=models.CASCADE, default="happy"
     )
     description = models.TextField(default="", blank=True)
 
