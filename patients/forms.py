@@ -24,7 +24,7 @@ class CreateDetailForm(forms.ModelForm):
         disease, percentage = diagnosis(
             model, photo.filename(), "uploads/patient_images/", train_df_main, labels
         )
-        detection(photo.filename())
+        # detection(photo.filename())
         photo.detection_file = "patient_detect_images/exp/" + photo.filename()
         # photo.cam=gradcam(photo.filename(), "uploads/patient_images/")
         photo.disease1 = disease[0]
