@@ -26,7 +26,7 @@ class CreateDetailForm(forms.ModelForm):
         )
         image_dir = "uploads/patient_images/"
         img_path = image_dir + photo.filename()
-        detection(img_path)
+        # detection(img_path)
         photo.detection_file = "patient_detect_images/exp/" + photo.filename()
         # photo.cam=gradcam(photo.filename(), "uploads/patient_images/")
         photo.disease1 = disease[0]
