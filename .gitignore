@@ -138,7 +138,7 @@ dmypy.json
 cython_debug/
 
 #yolo
-yolov5
+#yolov5
 
 #weights
 .GAN_research/PGGAN/weights
