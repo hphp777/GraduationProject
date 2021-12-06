@@ -318,10 +318,8 @@ def run(
 
 
 def main(img):
-    image_dir = "uploads/patient_images/"
-    img_path = image_dir + img
     check_requirements(exclude=("tensorboard", "thop"))
-    run(img_path)
+    run(img)
 
 
 if __name__ == "__main__":
