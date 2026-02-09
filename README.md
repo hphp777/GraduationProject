@@ -1,4 +1,4 @@
-:crystal_ball: Computer-Aided Diagnosis (CAD) Simulation Using Chest X-ray Data and Ideas for Real-World Deployment
+:crystal_ball: Computer-Aided Diagnosis (CAD) Simulation Using Chest X-ray Data and Idea for the Real-World Deployment
 =============
 
 ## :sparkles: Note for Reproducibility and Extended Development (2026/2/8)
