@@ -11,7 +11,7 @@ Unfortunately, I (Haengbok Chung) found that the synthesized datasets and traine
 -> After generating synthetic X-ray dataset, the generated data are pseudo-labeled using a pre-trained classifier model.
 
 
-## [Introduction]
+## [Project Description]
 
 Due to the global pandemic, the number of emergency patients continues to increase. More than
 half (56%) of patients visiting the emergency room are undergoing x-ray imaging. However, the time required for chest x-ray diagnosis in the emergency room takes about an hour, which is very long for emergency patients who need proper emergency treatment within golden time. In the case of system in this paper, x-ray imaging, which omits additional tests, is shortened to two stages of diagnosis, and the diagnosis speed of diagnosis is drastically shortened to around 12 seconds. To implement this, Classification and Detection-based Web Service was implemented, and Synthetic Medical X-ray Data were created using PGGAN to improve Classification performance. It is expected that these system will be used to improve the efficiency of medical process such as specifying problematic area, reducing x-ray processing time, and accurate disease classification in the emergency case.
