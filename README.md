@@ -1,6 +1,15 @@
 :crystal_ball:Chest X-ray Disease Diagnosis
 =============
 
+## :sparkles: Note for Reproducibility and Extended Development (2026/2/8)
+
+Unfortunately, I (Haengbok Chung) found that the synthesized datasets and trained model parameters are now deprecated and no longer accessible. The methodology to generate synthetic X-ray dataset was one of two approaches as far as I remember. I apologize for not including detailed implementations of these methods (which was my first research project), which limits its reproducibility. And I appreciate suggestions to develop this project for more sophisticated and complete versions.
+
+- After selecting classes that have small amount of data, train generative models (PGGAN in this project) for each class.
+- Gather all of the datasets from classes that have a small number of datasets and then train generative models for all classes.
+-> After generating synthetic X-ray dataset, the generated data is pseudo-labeled using a pre-trained classifier model.
+
+[Introduction]
 Due to the global pandemic, the number of emergency patients continues to increase. More than
 half (56%) of patients visiting the emergency room are undergoing x-ray imaging. However, the time required for chest x-ray diagnosis in the emergency room takes about an hour, which is very long for emergency patients who need proper emergency treatment within golden time. In the case of system in this paper, x-ray imaging, which omits additional tests, is shortened to two stages of diagnosis, and the diagnosis speed of diagnosis is drastically shortened to around 12 seconds. To implement this, Classification and Detection-based Web Service was implemented, and Synthetic Medical X-ray Data were created using PGGAN to improve Classification performance. It is expected that these system will be used to improve the efficiency of medical process such as specifying problematic area, reducing x-ray processing time, and accurate disease classification in the emergency case.
 
