@@ -10,7 +10,6 @@ Unfortunately, I (Haengbok Chung) found that the synthesized datasets and traine
 
 -> After generating synthetic X-ray dataset, the generated data are pseudo-labeled using a pre-trained classifier model.
 
-
 ## [Project Description]
 
 Due to the global pandemic, the number of emergency patients continues to increase. More than
@@ -35,6 +34,7 @@ This NIH Chest X-ray Dataset is comprised of 112,120 X-ray images with disease l
 <img src="https://user-images.githubusercontent.com/71118045/144366234-16d81ff2-3980-4499-96c6-4c4218b2dd28.PNG"  width="900" height="300"/>
 
 ###### Weights: [Google Drive Link](https://drive.google.com/drive/folders/1-uo9GchtOoAFvXmE0zpPi0eaFgKNOrk6?usp=sharing)
+
 
 ## :sparkles:2. Detection
 
