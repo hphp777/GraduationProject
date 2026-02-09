@@ -5,8 +5,8 @@
 
 Unfortunately, I (Haengbok Chung) found that the synthesized datasets and trained model parameters are now deprecated and no longer accessible. The methodology to generate synthetic X-ray dataset was one of two approaches as far as I remember. I apologize for not including detailed implementations of these methods (which was my first research project), which limits its reproducibility. And I appreciate suggestions to develop this project for more sophisticated and complete versions. Thank you to all the people who visited this project.
 
-- After selecting classes that have small amount of data, train generative models (PGGAN in this project) for each class.
-- Gather all of the datasets from classes that have a small number of datasets and then train generative models (PGGAN in this project) for all classes.
+- After selecting classes that have small amount of data, train generative models (###### [PGGAN](https://arxiv.org/abs/1710.10196) in this project) for each class.
+- Gather all of the datasets from classes that have a small number of datasets and then train generative models (###### [PGGAN](https://arxiv.org/abs/1710.10196) in this project) for all classes.
 
 -> After generating synthetic X-ray dataset, the generated data are pseudo-labeled using a pre-trained classifier model.
 
@@ -58,7 +58,6 @@ This NIH Chest X-ray Dataset is comprised of 112,120 X-ray images with disease l
 ###### PGGAN Weights: [Google Drive Link](https://drive.google.com/drive/folders/1Y9l7wqjt-cKR-gJRIe8DqZwbG91nyXEy?usp=sharing)
 
 ###### Generated Image(DCGAN): [Google Drive Link](https://drive.google.com/drive/folders/18MekMJsuhZS6Shu3T6nvmNihK4M4oilz?usp=sharing)
-###### [Original PGGAN Paper](https://arxiv.org/abs/1710.10196)
 
 ## :book:Papers
 ###### 1. 폐질환 의심 응급환자의 진단 과정 단축을 위한 AI기반 X-ray진단 시스템
