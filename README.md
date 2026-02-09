@@ -34,6 +34,7 @@ This NIH Chest X-ray Dataset is comprised of 112,120 X-ray images with disease l
 <img src="https://user-images.githubusercontent.com/71118045/144366234-16d81ff2-3980-4499-96c6-4c4218b2dd28.PNG"  width="900" height="300"/>
 
 ###### Weights: [Google Drive Link](https://drive.google.com/drive/folders/1-uo9GchtOoAFvXmE0zpPi0eaFgKNOrk6?usp=sharing)
+###### Classification model training code is heavily based on: [Kaggle](https://www.kaggle.com/code/redwankarimsony/nih-chest-x-ray8-classifier-cnn-visualization)
 
 
 ## :sparkles:2. Detection
