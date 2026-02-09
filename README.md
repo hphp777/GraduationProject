@@ -1,4 +1,4 @@
-:crystal_ball:Chest X-ray Disease Diagnosis
+:crystal_ball: Computer-Aided Diagnosis Using Chest X-ray Data
 =============
 
 ## :sparkles: Note for Reproducibility and Extended Development (2026/2/8)
