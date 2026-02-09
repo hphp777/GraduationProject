@@ -3,7 +3,7 @@
 
 ## :sparkles: Note for Reproducibility and Extended Development (2026/2/8)
 
-Unfortunately, I (Haengbok Chung) found that the synthesized datasets and trained model parameters are now deprecated and no longer accessible. The methodology to generate synthetic X-ray dataset was one of two approaches as far as I remember. I apologize for not including detailed implementations of these methods (which was my first research project), which limits its reproducibility. And I appreciate suggestions to develop this project for more sophisticated and complete versions.
+Unfortunately, I (Haengbok Chung) found that the synthesized datasets and trained model parameters are now deprecated and no longer accessible. The methodology to generate synthetic X-ray dataset was one of two approaches as far as I remember. I apologize for not including detailed implementations of these methods (which was my first research project), which limits its reproducibility. And I appreciate suggestions to develop this project for more sophisticated and complete versions. Thank you to all the people who visited this project.
 
 - After selecting classes that have small amount of data, train generative models (PGGAN in this project) for each class.
 - Gather all of the datasets from classes that have a small number of datasets and then train generative models (PGGAN in this project) for all classes.
