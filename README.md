@@ -10,7 +10,7 @@ Unfortunately, I (Haengbok Chung) found that the synthesized datasets and traine
 
 -> After generating synthetic X-ray dataset, the generated data are pseudo-labeled using a pre-trained classifier model.
 
--> Reference (theoretical support): https://docs.google.com/document/d/1nq4th8CvuLI3A90d1DiPef3qaw1c6JXaFC0flNiU_O4/edit?usp=drive_link
+-> Reference (theoretical support): https://drive.google.com/file/d/1gJqy2-DZnGisaHAXFmJzyoamO8fiV_m0/view?usp=drive_link
 
 ## [Project Description]
 
