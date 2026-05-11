@@ -8,7 +8,7 @@ Unfortunately, I (Haengbok Chung) found that the synthesized datasets and traine
 - After selecting classes that have small amount of data, train generative models ([PGGAN](https://arxiv.org/abs/1710.10196) in this project) for each class.
 - Gather all of the datasets from classes that have a small number of datasets and then train generative models ([PGGAN](https://arxiv.org/abs/1710.10196) in this project) for all classes.
 
--> After generating synthetic X-ray dataset, the generated data are pseudo-labeled using a pre-trained classifier model.
+-> After generating synthetic X-ray dataset, the generated data are pseudo-labeled using a pre-trained classifier model.\\
 -> Reference (theoretical support): https://docs.google.com/document/d/1nq4th8CvuLI3A90d1DiPef3qaw1c6JXaFC0flNiU_O4/edit?usp=drive_link
 
 ## [Project Description]
