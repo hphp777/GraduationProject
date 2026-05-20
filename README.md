@@ -12,7 +12,7 @@ Unfortunately, I (Haengbok Chung) found that the synthesized datasets and traine
 
 -> Reference (theoretical support): https://drive.google.com/file/d/1gJqy2-DZnGisaHAXFmJzyoamO8fiV_m0/view?usp=drive_link
 
--> Regarding academic integrity, the project's generated data and model parameters are officially submitted and shared with anyone via this GitHub repository, but unfortunately, the links have expired at some points. There were no competing interests among the judges and all other students.
+-> Regarding academic integrity, the project's generated data and model parameters are officially submitted and shared with anyone via this GitHub repository, but unfortunately, the links have expired at some points. There were no competing interests among all judges, reviewers of the papers from this project, and all other students.
 
 ## [Project Description]
 
