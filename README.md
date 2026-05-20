@@ -1,7 +1,7 @@
 :crystal_ball: Computer-Aided Diagnosis (CAD) Simulation Using Chest X-ray Data and Idea for the Real-World Deployment to Improve Diagnostic Efficiency
 =============
 
-## :sparkles: Note for Reproducibility and Extended Development (2026/5/10)
+## :sparkles: Note for Reproducibility and Extended Development (2026/5/20)
 
 Unfortunately, I (Haengbok Chung) found that the synthesized datasets and trained model parameters are now deprecated and no longer accessible. The methodology to generate synthetic X-ray dataset was one of two approaches as far as I remember. I apologize for not including detailed implementations of these methods (which was my first research project), which limits its reproducibility. And I appreciate suggestions to develop this project for more sophisticated and complete versions. Thank you to all the people who visited this project.
 
